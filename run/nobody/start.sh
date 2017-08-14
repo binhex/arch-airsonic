@@ -9,8 +9,8 @@ mkdir -p "${volume_transcode_path}"
 mkdir -p "${volume_podcast_path}"
 mkdir -p "${volume_playlists_path}"
 
-container_libresonic_path="/opt/airsonic"
-container_transcode_path="${container_airsonic_path}/transcode"
+container_install_path="/opt/airsonic"
+container_transcode_path="${container_install_path}/transcode"
 
 # copy transcode to config directory if path is empty
 if [ ! "$(ls -A ${volume_transcode_path})" ]; then
