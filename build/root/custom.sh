@@ -3,8 +3,8 @@
 # exit script if return code != 0
 set -e
 
-github_repo_name="airsonic"
-github_app_name="airsonic"
+repo_name="airsonic"
+app_name="airsonic"
 install_name="airsonic"
 install_path="/opt/${install_name}"
 
@@ -16,7 +16,7 @@ curly.sh -rc 6 -rw 10 -of /tmp/release_tag -url "https://github.com/${repo_name}
 release_tag=$(cat /tmp/release_tag | grep -P -o -m 1 "(?<=/${repo_name}/${app_name}/releases/tag/)[^\"]+")
 
 # download airsonic war file
-curly.sh -rc 6 -rw 10 -of "/opt/${install_name}/${install_name}.war" -url "https://github.com/${github_repo_name}/${github_app_name}/releases/download/${release_tag}/${github_app_name}-${release_tag}.war"
+curly.sh -rc 6 -rw 10 -of "/opt/${install_name}/${install_name}.war" -url "https://github.com/${repo_name}/${app_name}/releases/download/${release_tag}/${app_name}.war"
 
 # download madsonic transcoders (no compiled transcoders available for airsonic yet)
 curly.sh -rc 6 -rw 10 -of /tmp/transcode.zip -url "https://github.com/binhex/arch-airsonic/releases/download/20160505/20160505_madsonic-transcode-linux-x64.zip"
