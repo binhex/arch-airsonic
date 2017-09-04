@@ -69,7 +69,7 @@ rm /tmp/permissions_heredoc
 ####
 
 cat <<'EOF' > /tmp/envvars_heredoc
-export CONTEXT_PATH=$(echo "${CONTEXT_PATH}" | sed -e 's/^[ \t]*//')
+export CONTEXT_PATH=$(echo "${CONTEXT_PATH}" | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
 if [[ ! -z "${CONTEXT_PATH}" ]]; then
 	echo "[info] CONTEXT_PATH defined as '${CONTEXT_PATH}'" | ts '%Y-%m-%d %H:%M:%.S'
 else

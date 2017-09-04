@@ -24,6 +24,9 @@ else
 
 fi
 
+# set execute permissions for transcode binaries
+chmod +x "${volume_transcode_path}"/* 
+
 # define java settings passed to airsonic
 airsonic_HOST="0.0.0.0"
 airsonic_PORT="4040"
