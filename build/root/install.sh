@@ -44,8 +44,14 @@ aur_packages="jre8"
 # call aur install script (arch user repo)
 source /root/aur.sh
 
-# call custom install script
-source /root/custom.sh
+# github releases
+####
+
+# download airsonic
+/root/github.sh -df airsonic.war -dp "/tmp" -ep "/tmp/extracted" -ip "/opt/airsonic" -go "airsonic" -gr "airsonic" -rt "binary"
+
+# download madsonic transcoders (no compiled transcoders available for airsonic yet)
+/root/github.sh -df "20161222_madsonic-transcode-linux-x64.zip" -dp "/tmp" -ep "/tmp/extracted" -ip "/opt/airsonic/transcode" -go "binhex" -gr "arch-airsonic" -grs "20161222" -rt "binary"
 
 # container perms
 ####
