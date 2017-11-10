@@ -39,7 +39,7 @@ source /root/aor.sh
 ####
 
 # define aur packages
-aur_packages="jre8"
+aur_packages="jre8 ffmpeg-headless"
 
 # call aur install script (arch user repo)
 source /root/aur.sh
@@ -49,9 +49,6 @@ source /root/aur.sh
 
 # download airsonic
 /root/github.sh -df airsonic.war -dp "/tmp" -ep "/tmp/extracted" -ip "/opt/airsonic" -go "airsonic" -gr "airsonic" -rt "binary"
-
-# download madsonic transcoders (no compiled transcoders available for airsonic yet)
-/root/github.sh -df "20161222_madsonic-transcode-linux-x64.zip" -dp "/tmp" -ep "/tmp/extracted" -ip "/opt/airsonic/transcode" -go "binhex" -gr "arch-airsonic" -grs "20161222" -rt "binary"
 
 # container perms
 ####
