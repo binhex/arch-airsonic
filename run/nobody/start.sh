@@ -9,23 +9,9 @@ mkdir -p "${volume_transcode_path}"
 mkdir -p "${volume_podcast_path}"
 mkdir -p "${volume_playlists_path}"
 
-container_install_path="/opt/airsonic"
-container_transcode_path="${container_install_path}/transcode"
-
-# copy transcode to config directory if path is empty
-if [ ! "$(ls -A ${volume_transcode_path})" ]; then
-
-	echo "[info] transcode directory ${volume_transcode_path} is empty, copying transcoder binaries..."
-	cp "${container_transcode_path}/"* "${volume_transcode_path}/"
-
-else
-
-	echo "[info] transcoder binaries already in ${volume_transcode_path}..."
-
-fi
-
-# set execute permissions for transcode binaries
-chmod +x "${volume_transcode_path}"/* 
+# symlink ffmpeg (not statically compiled) to /config/transcode/
+# This path is constructed from "${airsonic_HOME}/transcode/" and cannot be altered at this time.
+ln -s /usr/bin/ffmpeg /config/transcode/ffmpeg
 
 # define java settings passed to airsonic
 airsonic_HOST="0.0.0.0"
