@@ -30,7 +30,7 @@ fi
 ####
 
 # define aur packages
-aur_packages="jre8 ffmpeg-headless"
+aur_packages="jre8"
 
 # call aur install script (arch user repo)
 source /root/aur.sh
