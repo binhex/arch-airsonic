@@ -104,9 +104,17 @@ export CONTEXT_PATH=$(echo "${CONTEXT_PATH}" | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
 if [[ ! -z "${CONTEXT_PATH}" ]]; then
 	echo "[info] CONTEXT_PATH defined as '${CONTEXT_PATH}'" | ts '%Y-%m-%d %H:%M:%.S'
 else
-	echo "[warn] CONTEXT_PATH not defined (via -e CONTEXT_PATH), assuming site runs from '/'" | ts '%Y-%m-%d %H:%M:%.S'
+	echo "[info] CONTEXT_PATH not defined (via -e CONTEXT_PATH), defaulting to '/'" | ts '%Y-%m-%d %H:%M:%.S'
+	export CONTEXT_PATH="/"
 fi
 
+export MAX_MEMORY=$(echo "${MAX_MEMORY}" | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
+if [[ ! -z "${MAX_MEMORY}" ]]; then
+	echo "[info] MAX_MEMORY defined as '${MAX_MEMORY}'" | ts '%Y-%m-%d %H:%M:%.S'
+else
+	echo "[info] MAX_MEMORY not defined (via -e MAX_MEMORY), defaulting to '2046'" | ts '%Y-%m-%d %H:%M:%.S'
+	export MAX_MEMORY="2046"
+fi
 EOF
 
 # replace envvar placeholder string with contents of file (here doc)
