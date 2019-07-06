@@ -27,6 +27,7 @@ docker run -d \
     -v <path for config files>:/config \
     -v /etc/localtime:/etc/localtime:ro \
     -e CONTEXT_PATH=<root path> \
+    -e MAX_MEMORY=<max memory for java> \
     -e UMASK=<umask for created files> \
     -e PUID=<uid for user> \
     -e PGID=<gid for user> \
@@ -50,6 +51,7 @@ docker run -d \
     -v /apps/docker/airsonic:/config \
     -v /etc/localtime:/etc/localtime:ro \
     -e CONTEXT_PATH=\ \
+    -e MAX_MEMORY=2046 \
     -e UMASK=000 \
     -e PUID=0 \
     -e PGID=0 \
