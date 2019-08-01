@@ -40,5 +40,6 @@ java -Xms"${airsonic_MIN_MEMORY}"m -Xmx"${airsonic_MAX_MEMORY}"m\
   -Dairsonic.defaultMusicFolder="${airsonic_DEFAULT_MUSIC_FOLDER}" \
   -Dairsonic.defaultPodcastFolder="${airsonic_DEFAULT_PODCAST_FOLDER}" \
   -Dairsonic.defaultPlaylistFolder="${airsonic_DEFAULT_PLAYLIST_FOLDER}" \
+  -Dserver.use-forward-headers=true \
   -Djava.awt.headless=true \
   -jar "${airsonic_WAR_PATH}"
