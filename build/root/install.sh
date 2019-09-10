@@ -38,8 +38,10 @@ source aur.sh
 # github releases
 ####
 
+download_filename="airsonic.war"
+
 # download airsonic
-github.sh -df airsonic.war -dp "/tmp" -ep "/tmp/extracted" -ip "/opt/airsonic" -go "airsonic" -gr "airsonic" -rt "binary"
+github.sh -df "${download_filename}" -da "${download_filename}" -dp "/tmp" -ep "/tmp/extracted" -ip "/opt/airsonic" -go "airsonic" -gr "airsonic" -rt "binary"
 
 # container perms
 ####
