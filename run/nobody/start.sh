@@ -9,6 +9,9 @@ mkdir -p "${volume_transcode_path}"
 mkdir -p "${volume_podcast_path}"
 mkdir -p "${volume_playlists_path}"
 
+# remove previous lock file (if it exists)
+/config/db/airsonic.lck
+
 # symlink ffmpeg (not statically compiled) to /config/transcode/
 # This path is constructed from "${airsonic_HOME}/transcode/" and cannot be altered at this time.
 ln -s /usr/bin/ffmpeg /config/transcode/ffmpeg
