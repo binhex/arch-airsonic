@@ -57,11 +57,10 @@ source aur.sh
 download_filename="airsonic.war"
 
 # download airsonic
-github.sh -df "${download_filename}" -da "${download_filename}" -dp "/tmp" -ep "/tmp/extracted" -ip "/opt/airsonic" -go "airsonic" -gr "airsonic" -rt "binary"
-
-ffmpeg_package_name="ffmpeg-release-static.tar.xz"
+github.sh --install-path "/opt/airsonic" --github-owner "airsonic" --github-repo "airsonic" --download-assets "airsonic.war" --query-type "release"
 
 # download statically linked ffmpeg (used by rutorrent screenshots plugin)
+ffmpeg_package_name="ffmpeg-release-static.tar.xz"
 curly.sh -rc 6 -rw 10 -of "/tmp/${ffmpeg_package_name}" -url "https://github.com/binhex/arch-packages/raw/master/static/${OS_ARCH}/${ffmpeg_package_name}"
 
 # unpack and move binaries
