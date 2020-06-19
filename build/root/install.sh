@@ -61,7 +61,7 @@ github.sh --install-path "/opt/airsonic" --github-owner "airsonic" --github-repo
 
 # download statically linked ffmpeg (used by rutorrent screenshots plugin)
 ffmpeg_package_name="ffmpeg-release-static.tar.xz"
-curly.sh -rc 6 -rw 10 -of "/tmp/${ffmpeg_package_name}" -url "https://github.com/binhex/arch-packages/raw/master/static/${OS_ARCH}/${ffmpeg_package_name}"
+curly.sh -of "/tmp/${ffmpeg_package_name}" -url "https://github.com/binhex/arch-packages/raw/master/static/${OS_ARCH}/${ffmpeg_package_name}"
 
 # unpack and move binaries
 mkdir -p "/tmp/unpack" && tar -xvf "/tmp/${ffmpeg_package_name}" -C "/tmp/unpack"
