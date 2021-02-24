@@ -1,33 +1,37 @@
 #!/bin/bash
 
-volume_transcode_path="/config/transcode"
-volume_podcast_path="/config/media/podcast"
-volume_playlists_path="/config/playlists"
+# define root path on /config
+root_folder="/config/airsonic"
+mkdir -p "${root_folder}"
 
-# create paths on /config
-mkdir -p "${volume_transcode_path}"
-mkdir -p "${volume_podcast_path}"
-mkdir -p "${volume_playlists_path}"
+config_transcode_path="${root_folder}/transcode"
+config_podcast_path="${root_folder}/media/podcast"
+config_playlists_path="${root_folder}/playlists"
+
+# create paths on /config/airsonic
+mkdir -p "${config_transcode_path}"
+mkdir -p "${config_podcast_path}"
+mkdir -p "${config_playlists_path}"
 
 # remove previous lock file (if it exists)
-/config/db/airsonic.lck
+rm -f "${root_folder}/db/airsonic.lck"
 
-# symlink ffmpeg (not statically compiled) to /config/transcode/
+# symlink ffmpeg (not statically compiled) to /config/airsonic/transcode/
 # This path is constructed from "${airsonic_HOME}/transcode/" and cannot be altered at this time.
-ln -s /usr/bin/ffmpeg /config/transcode/ffmpeg
+ln -s /usr/bin/ffmpeg "${config_transcode_path}/ffmpeg"
 
 # define java settings passed to airsonic
 airsonic_HOST="0.0.0.0"
 airsonic_PORT="4040"
 airsonic_HTTPS_PORT="4050"
 airsonic_CONTEXT_PATH="${CONTEXT_PATH}"
-airsonic_HOME="/config"
+airsonic_HOME="${root_folder}"
 airsonic_MIN_MEMORY="256"
 airsonic_MAX_MEMORY="${MAX_MEMORY}"
 airsonic_PIDFILE=""
 airsonic_DEFAULT_MUSIC_FOLDER="/media"
-airsonic_DEFAULT_PODCAST_FOLDER="/config/media/podcast"
-airsonic_DEFAULT_PLAYLIST_FOLDER="/config/playlists"
+airsonic_DEFAULT_PODCAST_FOLDER="${config_podcast_path}"
+airsonic_DEFAULT_PLAYLIST_FOLDER="${config_playlists_path}"
 airsonic_WAR_PATH="/opt/airsonic/airsonic.war"
 
 # run java pointing at airsonic war file with defined settings
