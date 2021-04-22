@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # define root path on /config
-root_folder="/config/airsonic"
+root_folder="/config"
 mkdir -p "${root_folder}"
 
 config_transcode_path="${root_folder}/transcode"
 config_podcast_path="${root_folder}/media/podcast"
 config_playlists_path="${root_folder}/playlists"
 
-# create paths on /config/airsonic
+# create paths on /config
 mkdir -p "${config_transcode_path}"
 mkdir -p "${config_podcast_path}"
 mkdir -p "${config_playlists_path}"
