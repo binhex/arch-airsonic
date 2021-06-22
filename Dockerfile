@@ -1,7 +1,7 @@
 FROM binhex/arch-base:latest
 MAINTAINER binhex
 
-# additional filess
+# additional files
 ##################
 
 # add supervisor conf file for app
