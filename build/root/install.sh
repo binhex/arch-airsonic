@@ -54,8 +54,6 @@ source aur.sh
 # github releases
 ####
 
-download_filename="airsonic.war"
-
 # download airsonic
 github.sh --install-path "/opt/airsonic" --github-owner "airsonic" --github-repo "airsonic" --download-assets "airsonic.war" --query-type "release"
 
@@ -70,7 +68,7 @@ mv /tmp/unpack/ffmpeg*/ff* "/usr/bin/"
 # container perms
 ####
 
-# define comma separated list of paths 
+# define comma separated list of paths
 install_paths="/opt/airsonic,/home/nobody"
 
 # split comma separated string into list for install paths
@@ -100,7 +98,7 @@ cat <<EOF > /tmp/permissions_heredoc
 previous_puid=\$(cat "/root/puid" 2>/dev/null || true)
 previous_pgid=\$(cat "/root/pgid" 2>/dev/null || true)
 
-# if first run (no puid or pgid files in /tmp) or the PUID or PGID env vars are different 
+# if first run (no puid or pgid files in /tmp) or the PUID or PGID env vars are different
 # from the previous run then re-apply chown with current PUID and PGID values.
 if [[ ! -f "/root/puid" || ! -f "/root/pgid" || "\${previous_puid}" != "\${PUID}" || "\${previous_pgid}" != "\${PGID}" ]]; then
 
