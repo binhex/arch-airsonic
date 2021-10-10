@@ -27,12 +27,6 @@ RUN chmod +x /root/*.sh /home/nobody/*.sh && \
 # set env variable for java
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk/jre
 
-# map /config to host defined config path (used to store configuration from app)
-VOLUME /config
-
-# map /media to host defined media path (used to read/write to media library)
-VOLUME /media
-
 # expose port for http
 EXPOSE 4040
 
