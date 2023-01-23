@@ -54,16 +54,8 @@ jobs:
           max_attempts: 3
           retry_wait_seconds: 120
           command: |
-            echo "##[set-output name=tag;]$(tag_name=${GITHUB_REF#refs/tags/} && echo "${tag_name//+/-}")"
+            tag="${GITHUB_REF_NAME}" && echo "tag=${tag//+/-}" >> $GITHUB_OUTPUT
         id: identify_github_release_tag_name
-      - name: TEST
-        shell: bash
-        run: |
-          tag="${GITHUB_REF_NAME}" && echo "tag=${tag//+/-}" >> $GITHUB_OUTPUT
-          export
-          echo "$GITHUB_OUTPUT"
-          echo "${{ steps.identify_github_release_tag_name.outputs.tag }}"
-          blowup!!
       - name: Generate temporary tag name
         shell: bash
         run: |
