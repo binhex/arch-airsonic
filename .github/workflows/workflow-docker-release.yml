@@ -56,6 +56,13 @@ jobs:
           command: |
             echo "##[set-output name=tag;]$(tag_name=${GITHUB_REF#refs/tags/} && echo "${tag_name//+/-}")"
         id: identify_github_release_tag_name
+      - name: TEST
+        shell: bash
+        run: |
+          echo "tag=${GITHUB_REF#refs/tags/} && tag=${tag//+/-}" >> $GITHUB_OUTPUT
+          export
+          echo "$GITHUB_OUTPUT"
+          echo "${{ steps.identify_github_release_tag_name.outputs.tag }}"
       - name: Generate temporary tag name
         shell: bash
         run: |
