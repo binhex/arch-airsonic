@@ -63,6 +63,7 @@ jobs:
           export
           echo "$GITHUB_OUTPUT"
           echo "${{ steps.identify_github_release_tag_name.outputs.tag }}"
+          blowup!!
       - name: Generate temporary tag name
         shell: bash
         run: |
